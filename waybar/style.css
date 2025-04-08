@@ -1,0 +1,190 @@
+@import url("$HOME/.cache/wal/colors-waybar.css");
+
+* {
+    font-family: Verdana;
+    font-size: 15px;
+    font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+    padding: 1px;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+window#waybar.empty {
+    background-color: transparent;
+}
+
+window#waybar.empty #window {
+    padding: 0px;
+    border: 0px;
+    background-color: transparent;
+}
+
+
+tooltip {
+    background: #1e1e2e;
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #11111b;
+    color: #cba6f7;
+}
+
+
+/*-----modules groups-----*/
+.modules-right {
+    border: 3px solid @color0;
+    border-radius: 30px 0px 0px 30px;
+    background-color: @color11;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.modules-center {
+    border: 3px solid @color0;
+    border-radius: 30px;
+    background-color: @color11;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    padding-right: 3px;
+    padding-left: 3px;
+}
+
+.modules-left {
+    border: 3px solid @color0;
+    border-radius: 0px 30px 30px 0px;
+    background-color: @color11;
+    padding: 2px;
+}
+
+#workspaces button {
+    color: #010101;
+    box-shadow: none;
+    text-shadow: none;
+    padding: 0px;
+    border-radius: 9px;
+    padding-left: 3px;
+    padding-right: 3px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#workspaces button.active {
+    color: #cba6f7;
+    border-radius: 15px;
+    background-color: black;
+    padding-right: 2px;
+    padding-left: 2px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#workspaces button.focused {
+    color: #d8dee9;
+}
+
+#workspaces button.urgent {
+    color: #11111b;
+    border-radius: 6px;
+}
+
+#workspaces button:hover {
+    color: #9CCFD8;
+    border-radius: 40px;
+    padding-left: 2px;
+    padding-right: 2px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#backlight,
+#backlight-slider,
+#battery,
+#clock,
+#bluetooth,
+#cpu,
+#disk,
+#memory,
+#network,
+#pulseaudio,
+#pulseaudio-slider,
+#temperature,
+#tray,
+#window,
+#wireplumber,
+#workspaces {
+    color: whitesmoke;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+#temperature.critical {
+    background-color: #ff0000;
+}
+@keyframes blink {
+    to {
+    color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#pulseaudio-slider slider {
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#pulseaudio-slider through {
+    min-width: 80px;
+    min-height: 5px;
+    border-radius: 5px;
+    background-color: #6E6A86;
+}
+
+#pulseaudio-slider highlight {
+    min-height: 10px;
+    border-radius: 5px;
+    background-color: purple;
+}
+
+#backlight-slider slider {
+    min-width: 0px;
+    min-height: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#backlight-slider through {
+    min-width: 80px;
+    min-height: 10px;
+    border-radius: 5px;
+    background-color: #6E6A86;
+}
+
+#backlight-slider highlight {
+    min-height: 10px;
+    border-radius: 5px;
+    background-color: purple;
+}
