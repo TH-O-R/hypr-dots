@@ -1,0 +1,18 @@
+#!/bin/bash
+
+WALLS=$HOME/Pictures/bg
+W_STYLE=$HOME/.config/hypr/waybar/style.css
+W_CONFIG=$HOME/.config/hypr/waybar/config.ini
+
+random_wallpaper=$(find $WALLS -type f | sort -R | head -1)
+
+# Terminate already running instances of swaybg and waybar
+killall -q swaybg waybar
+
+swaybg -m fill -i $random_wallpaper &
+# Use pywal to get matching colors for the setup
+wal -i $random_wallpaper -s -t &
+
+notify-send -h string:x-canonical-private-synchronous:shot-notify -u low -i $random_wallpaper "Random Wallpaper set." &
+sleep 3
+waybar -c $W_CONFIG -s $W_STYLE &

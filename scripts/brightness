@@ -1,0 +1,65 @@
+#!/bin/bash
+
+imgDIR="$HOME/.config/hypr/mako/icons"
+
+# Get the CURRENT brightness
+current_brightness=$(printf "%d\n" $(brightnessctl g))
+
+# Get the MAX brightness
+max_brightness=$(printf "%d\n" $(brightnessctl m))
+
+# Get brightness percentage
+get_percent() {
+    # Calculating the percentage
+    percentage=$(awk -v current="$current_brightness" -v max="$max_brightness" \ 'BEGIN { print int((current * 100) / max) }')
+
+    echo "${percentage}"
+}
+
+# Get mako icons
+get_icon() {
+    current="$current_brightness"
+    max="$max_brightness"
+
+    # Displaying different PNGs depending on the percentage
+    20ofmax=$((max * 20 / 100))
+    40ofmax=$((max * 40 / 100))
+    60ofmax=$((max * 60 / 100))
+    80ofmax=$((max * 80 / 100))
+
+    if [[ ("$current" -ge "0") && ("$current" -le "$20ofmax") ]]; then
+        icon="$imgDIR/brightness-20.png"
+    elif [[ ("$current" -ge "$20ofmax") && ("$current" -le "$40ofmax") ]]; then
+        icon="$imgDIR/brightness-40.png"
+    elif [[ ("$current" -ge "$40ofmax") && ("$current" -le "$60ofmax") ]]; then
+        icon="$imgDIR/brightness-60.png"
+    elif [[ ("$current" -ge "$60ofmax") && ("$current" -le "$80ofmax") ]]; then
+        icon="$imgDIR/brightness-80.png"
+    elif [[ ("$current" -ge "$80ofmax") && ("$current" -le "$max") ]]; then
+        icon="$imgDIR/brightness-100.png"
+    fi
+}
+
+# Notification
+notify() {
+    notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$icon" "Brightness: $(get_percent)"
+}
+
+# Increase brightness
+inc_brightness() {
+    brightnessctl s +5% && get_icon && notify
+}
+
+# Decrease brightness
+dec_brightness() {
+    brightnessctl s 5%- && get_icon && notify
+}
+
+# Arguments to use for hyprland.conf binds
+if [[ "$1" == "--get" ]]; then
+    get_percent
+elif [[ "$1" == "--inc" ]]; then
+    inc_brightness
+elif [[ "$1" == "--dec" ]]; then
+    dec_brightness
+fi
