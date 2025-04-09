@@ -1,0 +1,61 @@
+* {
+    font-family: "Hack";
+    font-size: 15px;
+    background: transparent;
+}
+
+#window {
+    background: rgba(47, 55, 65, .9);
+    margin-right: 200px;
+    border: 2px solid rgb(250, 250, 250);
+    border-radius: 30px;
+}
+
+#outer-box {
+    padding: 20px;
+}
+
+#innner-box {
+}
+
+#input {
+    background-color: --wofi-color1;
+    border: 0px solid --wofi-color3;
+    padding: 8px 12px;
+}
+
+#scroll {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#img {
+    padding-right: 8px;
+}
+
+#text {
+    color: --wofi-color2;
+}
+
+#text:selected {
+    color: --wofi-color0;
+}
+
+#entry {
+    padding: 6px;
+}
+
+#entry:selected {
+    background-color: --wofi-color3;
+    color: --wofi-color0;
+}
+
+#unselected {
+}
+
+#selected {
+}
+
+#input, #entry:selected {
+    border-radius: 4px;
+}
