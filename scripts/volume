@@ -1,0 +1,74 @@
+#!/bin/bash
+
+imgDIR="$HOME/.config/hypr/mako/icons"
+
+# Get Volume
+get_volume() {
+    volume=$(pamixer --get-volume)
+    echo "$volume"
+}
+
+# Get Icons
+get_icon() {
+    current=$(get_volume)
+    if [[ "$current" -eq "0" ]]; then
+        echo "$imgDIR/volume-mute.png"
+    elif [[ ("$current" -ge "0") && ("$current" -le "25") ]]; then
+        echo "$imgDIR/volume-low.png"
+    elif [[ ("$current" -ge "25") && ("$current" -le "60") ]]; then
+        echo "$imgDIR/volume-mid.png"
+    elif [[ ("$current" -ge "60") && ("$current" -le "100") ]]; then
+        echo "$imgDIR/volume-high.png"
+    fi
+}
+
+# Receive Notfication
+notify() {
+    notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume : $(get_volume)"
+}
+
+# Increase Volume
+inc_vol() {
+    pamixer -i 5 && notify
+}
+
+# Decrease Volume
+dec_vol() {
+    pamixer -d 5 && notify
+}
+
+# Toggle Mute
+toggle_mute() {
+    if [ "$pamixer --get-mute" == "false" ]; then
+        pamixer -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$imgDIR/volume-mute.png" "Volume Switched OFF"
+    elif [ "$pamixer --get-mute" == "true" ]; then
+        pamixer -u && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume Switched ON"
+    fi
+}
+
+# Toggle Microphone
+toggle_mic() {
+    inputSource=$(pamixer --list-sources | grep input | head -n1 | awk '{print $1}')
+    if [ "$(pamixer --source "$inputSource" --get-mute)" == "false" ]; then
+        pamixer -m --source "$inputSource" && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$imgDIR/microphone-mute.png" "Microphone Switched OFF"
+    elif [ "$(pamixer --source "$inputSource" --get-mute)" == "true" ]; then
+        pamixer -u --source "$inputSource" && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$imgDIR/microphone.png" "Microphone Switched ON"
+    fi
+}
+
+# Executue according to the args
+if [[ "$1" == "--get" ]]; then
+    get_volume
+elif [[ "$1" == "--inc" ]]; then
+    inc_vol
+elif [[ "$1" == "--dec" ]]; then
+    dec_vol
+elif [[ "$1" == "--toggle" ]]; then
+    toggle_mute
+elif [[ "$1" == "--toggle-mic" ]]; then
+    toggle_mic
+elif [[ "$1" == "--get-icon" ]]; then
+    get_icon
+else
+    get_volume
+fi

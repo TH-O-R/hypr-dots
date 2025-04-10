@@ -1,0 +1,76 @@
+#!/bin/bash
+
+imgDIR="$HOME/.config/hypr/mako/icons"
+
+time=$(date +%Y-%m-%d-%H-%M-%S)
+dir="$(xdg-user-dir PICTURES)/Screenshots"
+file="Screenshot_${time}_${RANDOM}.png"
+
+# notify user
+notify_ss="notify-send -h string:x-canonical-private-synchronous:shot-notify -u low -i ${imgDIR}/picture.png"
+notify_view() {
+    if [[ -e "$dir/$file" ]]; then
+        ${notify_ss} "Screenshot Saved."
+    else
+        ${notify_ss} "Screenshot Not saved"
+    fi
+}
+
+# Countdown
+countdown() {
+    for sec in $(seq $1 -1 1); do
+        notify-send -h string:x-canonical-private-synchronous:shot-notify -t 1000 -i "$imgDIR/timer.png" "Taking shot in : $sec"
+        sleep 1
+    done
+}
+
+# Take Screenshots
+shotNow() {
+    cd ${dir} && grim -
+    notify_view
+}
+
+shotin5() {
+    countdown '5'
+    sleep 1 && cd ${dir} && grim -
+    notify_view
+}
+
+shotin10() {
+    countdown '10'
+    sleep 1 && cd ${dir} && grim -
+    notify_view
+}
+
+shotWindow() {
+    win_pos=$(hyprctl activewindow | grep 'at:' | cut -d':' -f2 | tr -d ' ' | tail -n1)
+    win_size=$(hyprctl activewindow | grep 'size:' | cut -d':' -f2 | tr -d ' ' | tail -n1 | sed s/,/x/g)
+    cd ${dir} && grim -g "$win_pos $win_size" -
+    notify_view
+}
+
+shotArea() {
+    cd ${dir} && grim -g "$(slurp -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" -
+    notify_view
+}
+
+# Create the Screenshots dir if it does not exist
+if [[ ! -d "$dir" ]]; then
+    mkdir -p "$dir"
+fi
+
+if [[ "$1" == "--now" ]]; then
+    shotNow
+elif [[ "$1" == "--in5" ]]; then
+    shotin5
+elif [[ "$1" == "--in10" ]]; then
+    shotin10
+elif [[ "$1" == "--win" ]]; then
+    shotWindow
+elif [[ "$1" == "--area" ]]; then
+    shotArea
+else
+    echo -e "Available Options : --now --in5 --in10 --win --area"
+fi
+
+exit 0
