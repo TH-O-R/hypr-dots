@@ -1,6 +1,6 @@
 ## General
 show=drun
-prompt=apps
+prompt=Apps
 normal_window=false
 layer=top
 term=kitty
