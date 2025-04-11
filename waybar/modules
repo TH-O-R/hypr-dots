@@ -102,4 +102,11 @@
         },
         "on-click": "pavucontrol"
     },
+
+    "custom/launcher": {
+        //"format":"✾❖✾",
+        "format":"",
+        "on-click": "~/.config/hypr/scripts/menuFull",
+        "tooltip": false,
+    }
 }
