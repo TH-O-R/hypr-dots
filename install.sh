@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#set -e # Exit immediately on error
+set -e # Exit immediately on error
 clear
 
 # Colors
@@ -49,17 +49,7 @@ else
     echo -e "yay is already installed."
 fi
 
-# Step 2: Install dependencies line by line (from requirements.txt)
-if [ -f "$REQUIREMENTS_FILE" ]; then
-    echo -e "${GREEN}📦 Installing dependencies from $REQUIREMENTS_FILE...${NC}"
-
-    # Install all dependencies in one go, skipping comments/empty lines
-    yay -S --needed --noconfirm $(grep -vE '^\s*(#|$)' "$REQUIREMENTS_FILE")
-else
-    echo -e "${RED}⚠️ No $REQUIREMENTS_FILE found! Skipping dependency installation.${NC}"
-fi
-
-# Step 3: Clone hypr-dots repo if it doesn't exist
+# Step 2: Clone hypr-dots repo if it doesn't exist
 if [ ! -d "$CLONE_DIR" ]; then
     echo -e "${GREEN}📁 Cloning repo into $CLONE_DIR...${NC}"
     git clone "$REPO_URL" "$CLONE_DIR" --depth 1
@@ -67,6 +57,16 @@ else
     echo -e "${GREEN}📁 Repo already exists at $CLONE_DIR. Pulling latest changes...${NC}"
     cd $CLONE_DIR
     git stash && git pull
+fi
+
+# Step 3: Install dependencies line by line (from requirements.txt)
+if [ -f "$REQUIREMENTS_FILE" ]; then
+    echo -e "${GREEN}📦 Installing dependencies from $REQUIREMENTS_FILE...${NC}"
+
+    # Install all dependencies in one go, skipping comments/empty lines
+    yay -S --needed --noconfirm $(grep -vE '^\s*(#|$)' "$REQUIREMENTS_FILE")
+else
+    echo -e "${RED}⚠️ No $REQUIREMENTS_FILE found! Skipping dependency installation.${NC}"
 fi
 
 # Step 4: Optional setup script - Prompt the user
