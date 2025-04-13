@@ -25,7 +25,9 @@ if [[ $EUID -eq 0 ]]; then
 fi
 
 echo -e "${GREEN}🌿 Starting Hypr-Dots installation...${NC}"
+echo -e "${RED}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${NC}"
 echo -e "${RED} ATTENTION: Run a full system update and reboot first (Highly Recommended).${NC}\n\n"
+echo -e "${RED}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${NC}"
 echo -e "Beginning in 5 seconds..."
 sleep 5
 
