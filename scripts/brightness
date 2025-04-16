@@ -22,20 +22,20 @@ get_icon() {
     max="$max_brightness"
 
     # Displaying different PNGs depending on the percentage
-    20ofmax=$((max * 20 / 100))
-    40ofmax=$((max * 40 / 100))
-    60ofmax=$((max * 60 / 100))
-    80ofmax=$((max * 80 / 100))
+    _20ofmax=$((max * 20 / 100))
+    _40ofmax=$((max * 40 / 100))
+    _60ofmax=$((max * 60 / 100))
+    _80ofmax=$((max * 80 / 100))
 
-    if [[ ("$current" -ge "0") && ("$current" -le "$20ofmax") ]]; then
+    if [[ ("$current" -ge "0") && ("$current" -le "$_20ofmax") ]]; then
         icon="$imgDIR/brightness-20.png"
-    elif [[ ("$current" -ge "$20ofmax") && ("$current" -le "$40ofmax") ]]; then
+    elif [[ ("$current" -ge "$_20ofmax") && ("$current" -le "$_40ofmax") ]]; then
         icon="$imgDIR/brightness-40.png"
-    elif [[ ("$current" -ge "$40ofmax") && ("$current" -le "$60ofmax") ]]; then
+    elif [[ ("$current" -ge "$_40ofmax") && ("$current" -le "$_60ofmax") ]]; then
         icon="$imgDIR/brightness-60.png"
-    elif [[ ("$current" -ge "$60ofmax") && ("$current" -le "$80ofmax") ]]; then
+    elif [[ ("$current" -ge "$_60ofmax") && ("$current" -le "$_80ofmax") ]]; then
         icon="$imgDIR/brightness-80.png"
-    elif [[ ("$current" -ge "$80ofmax") && ("$current" -le "$max") ]]; then
+    elif [[ ("$current" -ge "$_80ofmax") && ("$current" -le "$max") ]]; then
         icon="$imgDIR/brightness-100.png"
     fi
 }

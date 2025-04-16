@@ -3,7 +3,7 @@
 SCRIPTSDIR=$HOME/.config/hypr/scripts
 
 # Kill already running processes
-_ps=(waybar mako)
+_ps=(waybar mako swaybg)
 for _prs in "${_ps[@]}"; do
     if [[ $(pidof ${_prs}) ]]; then
         killall -9 ${_prs}
@@ -20,6 +20,9 @@ ${SCRIPTSDIR}/gtkThemes &
 
 # Launch notifications daemon
 ${SCRIPTSDIR}/notifications &
+
+# Launch the wallpaper changer
+${SCRIPTSDIR}/changeWall &
 
 # Launch some useful software
 nm-applet --indicator &

@@ -10,7 +10,7 @@ file="Screenshot_${time}_${RANDOM}.png"
 notify_ss="notify-send -h string:x-canonical-private-synchronous:shot-notify -u low -i ${imgDIR}/picture.png"
 notify_view() {
     if [[ -e "$dir/$file" ]]; then
-        ${notify_ss} "Screenshot Saved."
+        ${notify_ss} "Screenshot saved."
     else
         ${notify_ss} "Screenshot Not saved"
     fi
