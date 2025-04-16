@@ -1,7 +1,7 @@
-@import url("$HOME/.cache/wal/colors-waybar.css");
+@import "colors.css";
 
 * {
-    font-family: Verdana;
+    font-family: "JetBrains Nerd Font";
     font-size: 15px;
     font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
     padding: 1px;
@@ -104,6 +104,7 @@ tooltip {
     transition: all 0.3s cubic-bezier(.55, -0.68, .48, 1.682);
 }
 
+#custom-launcher,
 #backlight,
 #backlight-slider,
 #battery,
@@ -127,6 +128,11 @@ tooltip {
     padding-left: 6px;
 }
 
+#custom-launcher {
+    font-weight: bold;
+    font-size: 130%;
+}
+
 #temperature.critical {
     background-color: #ff0000;
 }
@@ -143,6 +149,12 @@ tooltip {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
+}
+
+#battery.warning {
+    /*color: yellow;*/
+    /* ^--- Might not be visible */
+    background-color: transparent;
 }
 
 #pulseaudio-slider slider {

@@ -35,21 +35,23 @@ else
     # Create the directory if it doesn't exist
     echo -e "${GREEN}No existing config found. Creating necessary directories...${NC}"
     mkdir -p "$CONFIG_DIR" \
-        "$CONFIG_DIR/mako" "$CONFIG_DIR/mako/icons"\ 
-    "$CONFIG_DIR/scripts" "$CONFIG_DIR/waybar"\ 
-    "$CONFIG_DIR/wofi" "$CONFIG_DIR/wofifull"
+        "$CONFIG_DIR/mako" \
+        "$CONFIG_DIR/scripts" \
+        "$CONFIG_DIR/waybar" \
+        "$CONFIG_DIR/wofi" \
+        "$CONFIG_DIR/wofifull"
 fi
 
 # Now, copy the needed files from the cloned repo
 echo -e "${GREEN}📂 Copying config files from $CLONE_DIR to $CONFIG_DIR...${NC}"
 
 # Copy all relevant files and directories from the cloned repository to the config directory
-cp -r "$CLONE_DIR"hyprland.conf "$CONFIG_DIR/"
+cp "$CLONE_DIR"hyprland.conf "$CONFIG_DIR/"
 cp -r "$CLONE_DIR"/mako/* "$CONFIG_DIR/mako/"
 cp -r "$CLONE_DIR"/waybar/* "$CONFIG_DIR/waybar/"
 cp -r "$CLONE_DIR"/wofi/* "$CONFIG_DIR/wofi/"
 cp -r "$CLONE_DIR"/wofifull/* "$CONFIG_DIR/wofifull/"
-cp -r "$CLONE_DIR"/scripts/* "$CONFIG_DIR/scripts"
+cp -r "$CLONE_DIR"/scripts/* "$CONFIG_DIR/scripts/"
 
 # Check if the files were copied successfully
 if [ -d "$CONFIG_DIR" ]; then

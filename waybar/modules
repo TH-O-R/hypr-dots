@@ -56,7 +56,7 @@
     },
 
     "backlight": {
-        "format": "{percentage}% {icon}",
+        "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
 
