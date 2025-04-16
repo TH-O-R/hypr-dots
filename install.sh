@@ -24,17 +24,22 @@ if [[ $EUID -eq 0 ]]; then
     exit 1
 fi
 
-echo -e "${GREEN}🌿 Starting Hypr-Dots installation...${NC}"
-echo -e "${RED} ATTENTION: Run a full system update and reboot first (Highly Recommended).${NC}\n\n"
+echo -e "${GREEN}🌿 Starting Hypr-Dots installation...${NC}\n"
+
+echo -e "${RED}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${NC}"
+echo -e "${RED} ATTENTION: Run a full system update and reboot first (Highly Recommended).${NC}"
+echo -e "${RED}!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!${NC}\n\n"
 echo -e "Beginning in 5 seconds..."
 sleep 5
 
-# Step 1: Install git and yay if not present
+# Step 1: Install essential packages if not present
+echo -e "Proceeding to install Important packages..."
+sudo pacman -S base-devel --needed
 if ! command -v git &>/dev/null; then
     echo -e "${GREEN}📦 git not found. Installing git...${NC}"
     sudo pacman -S git
 else
-    echo -e "git is already installed. Proceeding"
+    echo -e "${GREEN}{::}${NC} git is already installed. Proceeding"
 fi
 if ! command -v yay &>/dev/null; then
     echo -e "${GREEN}📦 yay not found. Installing yay...${NC}"
@@ -44,7 +49,7 @@ if ! command -v yay &>/dev/null; then
     cd ..
     rm -rf yay
 else
-    echo -e "yay is already installed."
+    echo -e "${GREEN}{::}${NC} yay is already installed."
 fi
 
 # Step 2: Clone hypr-dots repo if it doesn't exist
@@ -52,7 +57,7 @@ if [ ! -d "$CLONE_DIR" ]; then
     echo -e "${GREEN}📁 Cloning repo into $CLONE_DIR...${NC}"
     git clone "$REPO_URL" "$CLONE_DIR" --depth 1
 else
-    echo -e "${GREEN}📁 Repo already exists at $CLONE_DIR. Pulling latest changes...${NC}"
+    echo -e "${GREEN}{::}📁 Repo already exists at $CLONE_DIR. Pulling latest changes...${NC}"
     cd $CLONE_DIR
     git stash && git pull
 fi
