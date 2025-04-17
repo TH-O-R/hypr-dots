@@ -19,6 +19,13 @@ if [ -d "$CONFIG_DIR" ]; then
         mv "$CONFIG_DIR" "$CONFIG_DIR".bak
         if [ -d "$CONFIG_DIR".bak ]; then
             echo -e "${GREEN}✅ Successfully backed up config${NC}"
+            # After backing up the dir you have to Create a new one
+            mkdir -p "$CONFIG_DIR" \
+                "$CONFIG_DIR/mako" \
+                "$CONFIG_DIR/scripts" \
+                "$CONFIG_DIR/waybar" \
+                "$CONFIG_DIR/wofi" \
+                "$CONFIG_DIR/wofifull"
         else
             echo -e "${RED}⚠️ Couldn't backup the folder! Exiting...${NC}"
             exit 1
@@ -46,7 +53,7 @@ fi
 echo -e "${GREEN}📂 Copying config files from $CLONE_DIR to $CONFIG_DIR...${NC}"
 
 # Copy all relevant files and directories from the cloned repository to the config directory
-cp "$CLONE_DIR"hyprland.conf "$CONFIG_DIR/"
+cp "$CLONE_DIR"/hyprland.conf "$CONFIG_DIR/"
 cp -r "$CLONE_DIR"/mako/* "$CONFIG_DIR/mako/"
 cp -r "$CLONE_DIR"/waybar/* "$CONFIG_DIR/waybar/"
 cp -r "$CLONE_DIR"/wofi/* "$CONFIG_DIR/wofi/"

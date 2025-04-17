@@ -73,7 +73,7 @@ else
 fi
 
 # Step 4: Optional setup script - Prompt the user
-echo -e "Do you want to run the automatic setup script (setup.sh)? [y/n]: "
+echo -e "${GREEN}{::}${NC}Do you want to run the automatic setup script (setup.sh)? [y/n]: "
 read -r VAR
 
 case "$VAR" in
