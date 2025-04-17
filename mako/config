@@ -9,8 +9,8 @@ on-touch=dismiss
 
 # STYLE OPTIONS
 # - General
-font=Noto Sans 15
-wdith=300
+font=JetBrains Nerd Font 15
+width=300
 height=100
 margin=10
 padding=15
