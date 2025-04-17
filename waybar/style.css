@@ -1,7 +1,7 @@
 @import "colors.css";
 
 * {
-    font-family: "JetBrains Nerd Font";
+    font-family: "JetBrainsMono Nerd Font";
     font-size: 15px;
     font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
     padding: 1px;
