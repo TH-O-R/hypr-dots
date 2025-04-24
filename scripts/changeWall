@@ -9,11 +9,14 @@ random_wallpaper=$(find $WALLS -type f | sort -R | head -1)
 # Terminate already running instances of swaybg and waybar
 killall -q swaybg waybar
 
+# Wait until the processes have been shut down
+while pgrep -x swaybg >/dev/null; do sleep 1; done
+while pgrep -x waybar >/dev/null; do sleep 1; done
+
 swaybg -m fill -i $random_wallpaper &
 # Use pywal to get matching colors for the setup
 wal -i $random_wallpaper -s -t &
 
 notify-send -h string:x-canonical-private-synchronous:shot-notify -u low -i $random_wallpaper "Random Wallpaper set." &
-sleep 3
 ln -sf ~/.cache/wal/colors-waybar.css ~/.config/hypr/waybar/colors.css
 waybar -c $W_CONFIG -s $W_STYLE &
