@@ -26,31 +26,31 @@ countdown() {
 
 # Take Screenshots
 shotNow() {
-    cd ${dir} && grim -
+    cd ${dir} && grim - | tee "$file" | wl-copy
     notify_view
 }
 
 shotin5() {
     countdown '5'
-    sleep 1 && cd ${dir} && grim -
+    sleep 1 && cd ${dir} && grim - | tee "$file" | wl-copy
     notify_view
 }
 
 shotin10() {
     countdown '10'
-    sleep 1 && cd ${dir} && grim -
+    sleep 1 && cd ${dir} && grim - | tee "$file" | wl-copy
     notify_view
 }
 
 shotWindow() {
     win_pos=$(hyprctl activewindow | grep 'at:' | cut -d':' -f2 | tr -d ' ' | tail -n1)
     win_size=$(hyprctl activewindow | grep 'size:' | cut -d':' -f2 | tr -d ' ' | tail -n1 | sed s/,/x/g)
-    cd ${dir} && grim -g "$win_pos $win_size" -
+    cd ${dir} && grim -g "$win_pos $win_size" - | tee "$file" | wl-copy
     notify_view
 }
 
 shotArea() {
-    cd ${dir} && grim -g "$(slurp -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" -
+    cd ${dir} && grim -g "$(slurp -b 1B1F28CC -c E06B74ff -s C778DD0D -w 2)" - | tee "$file" | wl-copy
     notify_view
 }
 
