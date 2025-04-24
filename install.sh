@@ -78,6 +78,7 @@ read -r VAR
 
 case "$VAR" in
 [yY][eE][sS] | [yY]) # Accept 'y', 'Y', 'yes', or 'Yes'
+    cd $CLONE_DIR
     echo -e "${GREEN}🔧 Running setup.sh...${NC}"
     if [ -f "setup.sh" ]; then
         chmod +x setup.sh
