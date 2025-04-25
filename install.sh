@@ -34,6 +34,10 @@ sleep 5
 
 # Step 1: Install essential packages if not present
 echo -e "Proceeding to install Important packages..."
+if ! command -v sudo &>/dev/null; then
+    echo -e "${RED}{::}sudo${NC} was not found... Please install it first then execute this script again!!"
+    exit 1
+fi
 sudo pacman -S base-devel --needed
 if ! command -v git &>/dev/null; then
     echo -e "${GREEN}📦 git not found. Installing git...${NC}"
