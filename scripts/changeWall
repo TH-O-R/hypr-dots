@@ -19,4 +19,5 @@ wal -i $random_wallpaper -s -t &
 
 notify-send -h string:x-canonical-private-synchronous:shot-notify -u low -i $random_wallpaper "Random Wallpaper set." &
 ln -sf ~/.cache/wal/colors-waybar.css ~/.config/hypr/waybar/colors.css
+sleep 1
 waybar -c $W_CONFIG -s $W_STYLE &
