@@ -13,20 +13,23 @@ bash <(curl -s https://raw.githubusercontent.com/TH-O-R/hypr-dots/refs/heads/mas
 Experience a dynamic and modern desktop environment with features that enhance usability and aesthetics.
 <img src="SS/SS10.png">
 <img src="SS/SS14.png">
-For more visual insights, explore the <a href="https://github.com/TH-O-R/hypr-dots/tree/master/SS>Screenshots Directory.</a>
+<p align="center">
+  👉 For more visual insights, explore the 
+  <a href="https://github.com/TH-O-R/hypr-dots/tree/master/SS">Screenshots Directory</a>.
+</p>
 
 <h2 align="center">🧩 Key Features:</h2>
-- Hyprland Compositor: A Wayland compositor offering advanced features and performance.
+- **Hyprland Compositor**: A Wayland compositor offering advanced features and performance.
 
-- Waybar: A customizable status bar providing system information and controls.
+- **Waybar**: A customizable status bar providing system information and controls.
 
-- Wofi: An application launcher for efficient navigation.
+- **Wofi**: An application launcher for efficient navigation.
 
-- Mako: A notification daemon to keep you informed.
+- **Mako**: A notification daemon to keep you informed.
 
-- Scripts: A collection of utility scripts to enhance functionality.
+- **Scripts**: A collection of utility scripts to enhance functionality.
 
-- Minimal: This collection of dotfiles aims to be minimal whithout sactificing on looks and still being productive.
+- __Minimal__: This collection of dotfiles aims to be minimal whithout sactificing on looks and still being productive.
 
 <h3>📦 Requirements:</h3>
 You really just need to have a minimal Arch install and the auto install script will do the rest for you.
@@ -43,3 +46,5 @@ This command fetches the latest changes and improvements.
 This project is licensed under the MIT License. See the LICENSE file for more details.
 
 Feel free to contribute, report issues, or suggest enhancements via the repository's Issues section.
+
+> **Note:** This setup is optimized for systems running Arch Linux or Arch-based distros.
