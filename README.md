@@ -19,6 +19,7 @@ Experience a dynamic and modern desktop environment with features that enhance u
 </p>
 
 <h2 align="center">🧩 Key Features:</h2>
+
 - **Hyprland Compositor**: A Wayland compositor offering advanced features and performance.
 
 - **Waybar**: A customizable status bar providing system information and controls.
