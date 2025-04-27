@@ -13,7 +13,7 @@ bash <(curl -s https://raw.githubusercontent.com/TH-O-R/hypr-dots/refs/heads/mas
 Experience a dynamic and modern desktop environment with features that enhance usability and aesthetics.
 <img src="SS/SS10.png">
 <img src="SS/SS14.png">
-For more visual insights, explore the <a href="https://github.com/TH-O-R/hypr-dots/tree/master/SS">Screenshots Directory.</a>
+For more visual insights, explore the <a href="https://github.com/TH-O-R/hypr-dots/tree/master/SS>Screenshots Directory.</a>
 
 <h2 align="center">🧩 Key Features:</h2>
 - Hyprland Compositor: A Wayland compositor offering advanced features and performance.
