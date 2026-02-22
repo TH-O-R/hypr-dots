@@ -9,7 +9,8 @@ on-touch=dismiss
 
 # STYLE OPTIONS
 # - General
-font=JetBrains Nerd Font 15
+# font=Iosevka Nerd Font 16
+font=JetBrainsMono Nerd Font 15
 width=300
 height=100
 margin=10
