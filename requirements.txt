@@ -5,7 +5,9 @@ network-manager-applet
 wofi
 pamixer
 brightnessctl
-pulseaudio
+pipewire
+pipewire-pulse
+wireplumber
 pavucontrol
 xdg-desktop-portal
 xdg-desktop-portal-hyprland
