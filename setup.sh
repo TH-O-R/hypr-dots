@@ -68,4 +68,14 @@ else
     exit 1
 fi
 
+# Add a default wallpaper so the user without a wallpaper doesn't get bamboozled with error messages
+WALL_DIR="$HOME/Pictures/bg"
+mkdir -p "$WALL_DIR"
+cp "$CLONE_DIR"/SS/default_wall.jpg "$WALL_DIR/"
+if [ -f "$WALL_DIR"/default_wall.jpg ]; then
+    echo -e "${GREEN}Added a default wallpaper to ${RED}~/Pictures/bg/${GREEN} this is where you should add any new wallpapers!${NC}"
+else
+    echo -e "${RED}Couldn't add a default wallpaper to ${GREEN}~/Pictures/bg/${RED} .You should add any pictures you want there to get the intended behaviour!${NC}"
+fi
+
 echo -e "${GREEN}🔧 Setup complete! You can now proceed with further configuration if necessary.${NC}"
